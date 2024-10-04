@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: rgb(10, 10, 10);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainController">
+   <children>
+      <Canvas fx:id="canvas" height="720.0" layoutY="145.0" width="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <effect>
+            <Glow level="0.79" />
+         </effect></Canvas>
+      <ScrollPane fx:id="scroll" hvalue="1.0" prefHeight="75.0" prefWidth="1280.0" style="-fx-background-color: lightgray;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane fx:id="top" prefHeight="60.0" prefWidth="1710.0" style="-fx-background-color: lightgray;">
+               <children>
+                  <ComboBox fx:id="dropdown" layoutX="7.0" layoutY="25.0" prefWidth="150.0" />
+                  <Label layoutX="7.0" layoutY="4.0" prefHeight="11.0" prefWidth="80.0" text="Simulation:" AnchorPane.leftAnchor="7.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="loadBtn" layoutX="162.0" layoutY="25.0" mnemonicParsing="false" text="Load" />
+                  <Button fx:id="startBtn" disable="true" layoutX="209.0" layoutY="25.0" mnemonicParsing="false" text="Start" />
+                  <Button fx:id="stopBtn" disable="true" layoutX="255.0" layoutY="25.0" mnemonicParsing="false" text="Stop" />
+                  <AnchorPane fx:id="sliders" layoutX="500.0" layoutY="1.0">
+                     <children>
+                        <Slider fx:id="dtSlider" layoutX="3.0" layoutY="19.0" majorTickUnit="0.05" max="10.0" min="1.0E-4" prefHeight="31.0" prefWidth="230.0" showTickLabels="true" showTickMarks="true" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" prefHeight="20.0" prefWidth="228.0" text="Delta Time:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dtLabel" layoutX="240.0" layoutY="19.0" maxWidth="-Infinity" prefHeight="17.0" prefWidth="47.0" style="-fx-background-color: gray;" text="0.0001">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Slider fx:id="nSlider" layoutX="308.0" layoutY="19.0" majorTickUnit="10000.0" max="100000.0" min="1.0" minorTickCount="25" prefHeight="38.0" prefWidth="263.0" showTickLabels="true" showTickMarks="true" />
+                        <Label fx:id="nLabel" layoutX="585.0" layoutY="21.0" maxWidth="-Infinity" prefHeight="17.0" prefWidth="58.0" style="-fx-background-color: gray;" text="10000">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Slider fx:id="thetaSlider" layoutX="660.0" layoutY="19.0" majorTickUnit="0.1" max="1.0" minorTickCount="10" prefHeight="38.0" prefWidth="73.0" showTickLabels="true" showTickMarks="true" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="314.0" prefHeight="20.0" prefWidth="250.0" text="N-Bodies:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="660.0" layoutY="3.0" prefHeight="20.0" prefWidth="72.0" text="Theta:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="thetaLabel" layoutX="740.0" layoutY="19.0" maxWidth="-Infinity" prefHeight="17.0" prefWidth="33.0" style="-fx-background-color: gray;" text="0.50">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="checkboxes" layoutX="1319.0" layoutY="3.0" prefHeight="53.0" prefWidth="463.0">
+                     <children>
+                        <CheckBox fx:id="fpsCheckbox" mnemonicParsing="false" text="Show FPS" />
+                        <CheckBox fx:id="quadCheckbox" layoutY="18.0" mnemonicParsing="false" text="Show Quads" />
+                        <CheckBox fx:id="performanceCheckbox" layoutY="36.0" mnemonicParsing="false" text="Show Performances" />
+                        <CheckBox fx:id="tracesCheapCheckbox" layoutX="308.0" layoutY="3.0" mnemonicParsing="false" text="Show Traces (Cheap)" />
+                        <CheckBox fx:id="scaleCheckbox" layoutX="308.0" layoutY="39.0" mnemonicParsing="false" text="Scale Mass (1.00)" />
+                        <CheckBox fx:id="tracesExpensiveCheckbox" layoutX="308.0" layoutY="21.0" mnemonicParsing="false" text="Show Traces (Expensive)" />
+                        <CheckBox fx:id="velocitiesCheckbox" layoutX="144.0" layoutY="3.0" mnemonicParsing="false" text="Show Velocities" />
+                        <CheckBox fx:id="smartCheckbox" layoutX="144.0" layoutY="39.0" mnemonicParsing="false" selected="true" text="Smart Render" />
+                        <CheckBox fx:id="forcesCheckbox" layoutX="144.0" layoutY="21.0" mnemonicParsing="false" text="Show Forces" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="312.0" layoutY="9.0">
+                     <children>
+                        <TextField fx:id="simulationWidth" layoutX="15.0" layoutY="17.0" prefHeight="25.0" prefWidth="72.0" text="10000" />
+                        <Label layoutX="91.0" layoutY="20.0" text="x">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="simulationHeight" layoutX="101.0" layoutY="17.0" prefHeight="25.0" prefWidth="72.0" text="10000" />
+                        <Label alignment="CENTER" layoutX="2.0" layoutY="-5.0" prefHeight="22.0" prefWidth="186.0" text="Simulation Window Size:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Label fx:id="updatingLabel" disable="true" layoutY="695.0" opacity="0.0" prefHeight="23.0" prefWidth="86.0" style="-fx-background-color: red; -fx-background-radius: 0 10 0 0;" text="UPDATING" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="fpsLabel" alignment="CENTER" disable="true" layoutX="1205.0" layoutY="687.0" opacity="0.0" prefHeight="33.0" prefWidth="75.0" text="500.50" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="performanceLabel" alignment="TOP_LEFT" disable="true" layoutX="14.0" layoutY="83.0" opacity="0.0" prefHeight="247.0" prefWidth="172.0" text="PERFORMANCE:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
